@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodReads", "GoodReads\GoodReads.csproj", "{0AEFCEB2-229C-4173-8BE1-BEA02D361C4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodReads", "GoodReads\GoodReads.csproj", "{0AEFCEB2-229C-4173-8BE1-BEA02D361C4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodReads.Logic", "GoodReads.Logic\GoodReads.Logic.csproj", "{5F9C387E-212B-4192-8CD1-847E1AA6C291}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodReadsTests", "GoodReadsTests\GoodReadsTests.csproj", "{9CE50E26-8CFD-496F-A4D1-1FC7195507D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{0AEFCEB2-229C-4173-8BE1-BEA02D361C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AEFCEB2-229C-4173-8BE1-BEA02D361C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AEFCEB2-229C-4173-8BE1-BEA02D361C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F9C387E-212B-4192-8CD1-847E1AA6C291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F9C387E-212B-4192-8CD1-847E1AA6C291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F9C387E-212B-4192-8CD1-847E1AA6C291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F9C387E-212B-4192-8CD1-847E1AA6C291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CE50E26-8CFD-496F-A4D1-1FC7195507D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE50E26-8CFD-496F-A4D1-1FC7195507D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE50E26-8CFD-496F-A4D1-1FC7195507D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE50E26-8CFD-496F-A4D1-1FC7195507D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
