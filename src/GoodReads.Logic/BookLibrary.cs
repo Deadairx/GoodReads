@@ -5,11 +5,21 @@ namespace GoodReads.Logic
 {
     public class BookLibrary
     {
-        public void Add(string bookToAdd) { }
+        private List<string> books = new List<string>();
+
+        public void Add(string bookToAdd)
+        {
+            books.Add(bookToAdd);
+        }
+
+        public string Get(int bookID)
+        {
+            return books[bookID];
+        }
 
         public List<string> GetAll()
         {
-            return new List<string>();
+            return books;
         }
     }
 }
