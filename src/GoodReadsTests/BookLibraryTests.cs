@@ -58,11 +58,34 @@ namespace GoodReadsTests
         public void Edit_GivenBookIdAndNewTitle_ChangesBookId()
         {
             // Arrange
-
+            var bookLibrary = new BookLibrary();
+            var expectedBookTitle = "War and Peace";
+            bookLibrary.Add("A Tale of Two Cities");
+            bookLibrary.Add("Fellowship of the Ring");
+            bookLibrary.Add("Pride and Prejudice and Zombies");
 
             // Act
+            bookLibrary.Edit(1, expectedBookTitle);
 
             // Assert
+            var actual = bookLibrary.Get(1);
+            actual.Should().Be(expectedBookTitle);
+        }
+
+        [Fact]
+        public void Delete_GivenBookId_RemovesBookFromLibrary()
+        {
+            // Arrange
+            var bookLibrary = new BookLibrary();
+            bookLibrary.Add("A Tale of Two Cities");
+            bookLibrary.Add("Fellowship of the Ring");
+            bookLibrary.Add("Pride and Prejudice and Zombies");
+
+            // Act
+            bookLibrary.Delete(1);
+
+            // Assert
+            Assert.Throws<KeyNotFoundException>(() => bookLibrary.Get(1));
         }
     }
 }
