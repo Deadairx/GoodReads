@@ -51,7 +51,7 @@ namespace GoodReadsTests
             bookLibrary.Add("Pride and Prejudice and Zombies");
 
             // Act
-            Assert.Throws<ArgumentOutOfRangeException>(() => bookLibrary.Get(5));
+            Assert.Throws<KeyNotFoundException>(() => bookLibrary.Get(5));
         }
 
         [Fact]

@@ -11,31 +11,43 @@ namespace GoodReads.Logic
         public void Add(string bookToAdd)
         {
             // Need to get highest Id
-            // Id's could not be consecutive
-            // tempId could return null (result/operation result pattern)
-            var tempId = books.Where(b => b.Id == ).Select(b => b.Id);
-            var book = Book.Create(, bookToAdd);
-            books.Add(bookToAdd);
+            // Needs to detect if books is empty
+            int newId = 0;
+            if(books.Count > 0)
+            {
+                newId = books.Max(b => b.Id) + 1;
+            }
+            var book = Book.Create(newId, bookToAdd);
+            books.Add(book);
         }
 
         public string Get(int bookID)
         {
-            return books[bookID];
+            var book = books.SingleOrDefault(b => b.Id == bookID);
+            if(book == null)
+            {
+                throw new KeyNotFoundException();
+            }
+            return book.Title;
         }
 
         public List<string> GetAll()
         {
-            return books;
+            return books.Select(b => b.Title).ToList();
         }
 
         public void Edit(int bookId, string newBookTitle)
         {
-            books[bookId] = newBookTitle;
+            var book = books.Single(b => b.Id == bookId);
+            books.Remove(book);
+            book.SetTitle(newBookTitle);
+            books.Add(book);
         }
 
         public void Delete(int bookId)
         {
-            books.RemoveAt(bookId);
+            var book = books.Single(b => b.Id == bookId);
+            books.Remove(book);
         }
     }
 }

@@ -26,5 +26,10 @@ namespace GoodReads.Logic
         {
             return new Book(bookId, bookTitle);
         }
+
+        public void SetTitle(string newBookTitle)
+        {
+            Title = newBookTitle;
+        }
     }
 }
