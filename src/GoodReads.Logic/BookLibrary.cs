@@ -21,14 +21,14 @@ namespace GoodReads.Logic
             books.Add(book);
         }
 
-        public string Get(int bookID)
+        public Book Get(int bookID)
         {
             var book = books.SingleOrDefault(b => b.Id == bookID);
             if(book == null)
             {
                 throw new KeyNotFoundException();
             }
-            return book.Title;
+            return book;
         }
 
         public List<string> GetAll()
@@ -48,6 +48,12 @@ namespace GoodReads.Logic
         {
             var book = books.Single(b => b.Id == bookId);
             books.Remove(book);
+        }
+
+        public void AddRating(int bookId, int rating)
+        {
+            var book = books.Single(b => b.Id == bookId);
+            book.SetRating(rating);
         }
     }
 }
