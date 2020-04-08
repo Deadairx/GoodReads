@@ -109,7 +109,7 @@ namespace GoodReadsTests
         // Theory allows for multiple iterations of this test
         [Theory]
         [InlineData(11)]
-        [InlineData(-1)]
+        [InlineData(0)]
         public void AddRating_GivenOutOfRangeRating_ThrowsError(int inputRating)
         {
             // Arrange
@@ -119,8 +119,9 @@ namespace GoodReadsTests
             bookLibrary.Add("Pride and Prejudice and Zombies");
 
             // Act
-            Assert.Throws<ArgumentOutOfRangeException>(() => 
+            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => 
                 bookLibrary.AddRating(1, inputRating));
+            exception.Message.Should().Contain("Rating needs to be a number from 1 and 10");
         }
     }
 }

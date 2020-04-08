@@ -35,9 +35,9 @@ namespace GoodReads.Logic
 
         public void SetRating(int bookRating)
         {
-            if(bookRating < 0 || bookRating > 10)
+            if(bookRating < 1 || bookRating > 10)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Rating needs to be a number from 1 and 10");
             }
             Rating = bookRating;
         }
