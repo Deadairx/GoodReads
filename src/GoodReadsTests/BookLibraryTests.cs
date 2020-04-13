@@ -1,11 +1,10 @@
 ﻿using FluentAssertions;
-using GoodReads.Logic;
+using GoodReads.Domain;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
-namespace GoodReadsTests
+namespace GoodReads.Tests.Domain
 {
     public class BookLibraryTests
     {

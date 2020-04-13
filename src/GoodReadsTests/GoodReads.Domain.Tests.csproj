@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GoodReads.Logic\GoodReads.Logic.csproj" />
+    <ProjectReference Include="..\GoodReads.Logic\GoodReads.Domain.csproj" />
   </ItemGroup>
 
 </Project>

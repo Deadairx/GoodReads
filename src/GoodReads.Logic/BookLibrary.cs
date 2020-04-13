@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GoodReads.Logic
+namespace GoodReads.Domain
 {
     public class BookLibrary
     {
