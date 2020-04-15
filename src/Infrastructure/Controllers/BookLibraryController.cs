@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GoodReads.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Infrastructure.Controllers
@@ -10,36 +7,42 @@ namespace Infrastructure.Controllers
     [ApiController]
     public class BookLibraryController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private static BookLibrary _memoryBookLibrary;
+
+        // Very first thing that runs in this controller
+        // Runs once
+        static BookLibraryController()
         {
-            return new string[] { "value1", "value2" };
+            _memoryBookLibrary = new BookLibrary();
+            _memoryBookLibrary.Add("Iliad");
+            _memoryBookLibrary.Add("Dracula");
+            _memoryBookLibrary.Add("Beowulf");
+            _memoryBookLibrary.Add("Captain Underpants");
+            _memoryBookLibrary.Add("Where the Red Fern Grows");
+            _memoryBookLibrary.Add("Odyssey");
+            _memoryBookLibrary.Add("Green Eggs and Ham");
+            _memoryBookLibrary.Add("The Hungry Caterpillar");
+            _memoryBookLibrary.Add("Ender's Game");
+            _memoryBookLibrary.Add("Redwall");
+            _memoryBookLibrary.Add("A Tale of Two Cities");
         }
+
+        // GET api/values
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Book> Get(int id)
         {
-            return "value";
+            return _memoryBookLibrary.Get(id);
         }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+
 
         // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+
 
         // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+
     }
 }
