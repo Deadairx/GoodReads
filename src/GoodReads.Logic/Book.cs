@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GoodReads.Logic
+namespace GoodReads.Domain
 {
     public class Book
     {
