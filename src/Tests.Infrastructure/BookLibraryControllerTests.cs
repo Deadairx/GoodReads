@@ -33,8 +33,5 @@ namespace Tests.Infrastructure
             // Assert
             actual.Value.Title.Should().Be(expectedBookTitle);
         }
-
-
-        [Fact]
     }
 }
