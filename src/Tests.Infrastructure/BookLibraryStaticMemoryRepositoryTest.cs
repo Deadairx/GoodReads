@@ -23,5 +23,20 @@ namespace Tests.Infrastructure
             // Assert
             actual.Title.Should().Be(expectedBookTitle);
         }
+
+        [Fact]
+        public void GetById_GivenDifferentId_ReturnsDifferentBook()
+        {
+            // Arrange
+            var expectedBookTitle = "Beowulf";
+            IBookLibraryRepository bookLibraryRepository =
+                new BookLibraryStaticMemoryRepository();
+
+            // Act
+            var actual = bookLibraryRepository.GetById(2);
+
+            // Assert
+            actual.Title.Should().Be(expectedBookTitle);
+        }
     }
 }
