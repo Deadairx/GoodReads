@@ -7,24 +7,11 @@ namespace Infrastructure.Controllers
     [ApiController]
     public class BookLibraryController : ControllerBase
     {
-        private static BookLibrary _memoryBookLibrary;
+        private IBookLibraryRepository _bookLibraryRepository;
 
-        // Very first thing that runs in this controller
-        // Runs once
-        static BookLibraryController()
+        public BookLibraryController(IBookLibraryRepository bookLibraryRepository)
         {
-            _memoryBookLibrary = new BookLibrary();
-            _memoryBookLibrary.Add("Iliad");
-            _memoryBookLibrary.Add("Dracula");
-            _memoryBookLibrary.Add("Beowulf");
-            _memoryBookLibrary.Add("Captain Underpants");
-            _memoryBookLibrary.Add("Where the Red Fern Grows");
-            _memoryBookLibrary.Add("Odyssey");
-            _memoryBookLibrary.Add("Green Eggs and Ham");
-            _memoryBookLibrary.Add("The Hungry Caterpillar");
-            _memoryBookLibrary.Add("Ender's Game");
-            _memoryBookLibrary.Add("Redwall");
-            _memoryBookLibrary.Add("A Tale of Two Cities");
+            _bookLibraryRepository = bookLibraryRepository;
         }
 
         // GET api/values
@@ -33,7 +20,7 @@ namespace Infrastructure.Controllers
         [HttpGet("{id}")]
         public ActionResult<Book> Get(int id)
         {
-            return _memoryBookLibrary.Get(id);
+            return _bookLibraryRepository.GetById(id);
         }
 
         // POST api/values

@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Infrastructure;
 using Infrastructure.Controllers;
 using Xunit;
 
@@ -11,7 +12,9 @@ namespace Tests.Infrastructure
         {
             // Arrange
             var expectedBookTitle = "Captain Underpants";
-            var controller = new BookLibraryController();
+            IBookLibraryRepository bookLibraryRepository =
+                new BookLibraryStaticMemoryRepository();
+            var controller = new BookLibraryController(bookLibraryRepository);
 
             // Act
             var actual = controller.Get(3);
@@ -25,7 +28,9 @@ namespace Tests.Infrastructure
         {
             // Arrange
             var expectedBookTitle = "Where the Red Fern Grows";
-            var controller = new BookLibraryController();
+            IBookLibraryRepository bookLibraryRepository =
+                new BookLibraryStaticMemoryRepository();
+            var controller = new BookLibraryController(bookLibraryRepository);
 
             // Act
             var actual = controller.Get(4);
@@ -33,8 +38,5 @@ namespace Tests.Infrastructure
             // Assert
             actual.Value.Title.Should().Be(expectedBookTitle);
         }
-
-
-        [Fact]
     }
 }
