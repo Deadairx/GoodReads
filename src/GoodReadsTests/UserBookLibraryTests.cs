@@ -33,5 +33,22 @@ namespace GoodReads.Domain.Tests
             // Assert
             userBookLibrary.User.Should().Be(expectedUser);
         }
+
+        [Fact]
+        public void AddBookRating_GivenBookId_AddsBookToUserBookLibrary()
+        {
+            // Arrange
+            var expectedRating = 3;
+            var user = User.Create();
+            var userBookLibrary = UserBookLibrary.Create(user);
+
+            // Act
+            userBookLibrary.AddBookRating(3, expectedRating);
+
+            // Assert
+            userBookLibrary.GetBookRating(3).Rating.Should().Be(expectedRating);
+        }
+
+        //Test for adding two BookRatings of the same bookId
     }
 }
