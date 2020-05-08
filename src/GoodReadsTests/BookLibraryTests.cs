@@ -86,41 +86,5 @@ namespace GoodReads.Tests.Domain
             // Assert
             Assert.Throws<KeyNotFoundException>(() => bookLibrary.Get(1));
         }
-
-        [Fact]
-        public void AddRating_GivenValidBookIdAndRating_AddsRatingToBook()
-        {
-            // Arrange
-            var expectedRating = 5;
-            var bookLibrary = new BookLibrary();
-            bookLibrary.Add("A Tale of Two Cities");
-            bookLibrary.Add("Fellowship of the Ring");
-            bookLibrary.Add("Pride and Prejudice and Zombies");
-
-            // Act
-            bookLibrary.AddRating(1, expectedRating);
-
-            // Assert
-            var actual = bookLibrary.Get(1);
-            actual.Rating.Should().Be(expectedRating);
-        }
-
-        // Theory allows for multiple iterations of this test
-        [Theory]
-        [InlineData(11)]
-        [InlineData(0)]
-        public void AddRating_GivenOutOfRangeRating_ThrowsError(int inputRating)
-        {
-            // Arrange
-            var bookLibrary = new BookLibrary();
-            bookLibrary.Add("A Tale of Two Cities");
-            bookLibrary.Add("Fellowship of the Ring");
-            bookLibrary.Add("Pride and Prejudice and Zombies");
-
-            // Act
-            var exception = Assert.Throws<ArgumentOutOfRangeException>(() => 
-                bookLibrary.AddRating(1, inputRating));
-            exception.Message.Should().Contain("Rating needs to be a number from 1 and 10");
-        }
     }
 }

@@ -49,11 +49,5 @@ namespace GoodReads.Domain
             var book = books.Single(b => b.Id == bookId);
             books.Remove(book);
         }
-
-        public void AddRating(int bookId, int rating)
-        {
-            var book = books.Single(b => b.Id == bookId);
-            book.SetRating(rating);
-        }
     }
 }
