@@ -30,10 +30,22 @@ namespace GoodReads.Domain
             return new UserBookLibrary(user);
         }
 
+        private bool HasBook(int bookId)
+        {
+            return _bookRatings.Any(br => br.BookId == bookId);
+        }
+
         public void AddBookRating(int bookId, int bookRating)
         {
             var newBookRating = BookRating.Create(bookId, bookRating);
-            _bookRatings.Add(newBookRating);
+            if (HasBook(bookId))
+            {
+                GetBookRating(bookId).UpdateRating(bookRating);
+            }
+            else
+            {
+                _bookRatings.Add(newBookRating);
+            }
         }
 
         public BookRating GetBookRating(int bookId)

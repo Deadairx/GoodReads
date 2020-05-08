@@ -24,5 +24,10 @@ namespace GoodReads.Domain
         {
             return new BookRating(bookId, bookRating);
         }
+
+        public void UpdateRating(int newBookRating)
+        {
+            Rating = newBookRating;
+        }
     }
 }

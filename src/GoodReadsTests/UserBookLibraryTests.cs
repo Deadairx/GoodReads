@@ -49,6 +49,36 @@ namespace GoodReads.Domain.Tests
             userBookLibrary.GetBookRating(3).Rating.Should().Be(expectedRating);
         }
 
-        //Test for adding two BookRatings of the same bookId
+        [Fact]
+        public void AddBookRating_GivenExistingBookId_UpdateRating()
+        {
+            // Arrange
+            var expectedRating = 3;
+            var bookId = 3;
+            var user = User.Create();
+            var userBookLibrary = UserBookLibrary.Create(user);
+            userBookLibrary.AddBookRating(bookId, 1);
+
+            // Act
+            userBookLibrary.AddBookRating(bookId, expectedRating);
+
+            // Assert
+            userBookLibrary.GetBookRating(bookId).Rating.Should().Be(expectedRating);
+        }
+
+        [Fact]
+        public void GetBookRating_GivenNonExistentBookId_ThrowException()
+        {
+            // Arrange
+            var bookId = 3;
+            var user = User.Create();
+            var userBookLibrary = UserBookLibrary.Create(user);
+
+            // Act
+
+            // Assert
+            Assert.Throws<InvalidOperationException>(() => 
+                userBookLibrary.GetBookRating(bookId));
+        }
     }
 }
