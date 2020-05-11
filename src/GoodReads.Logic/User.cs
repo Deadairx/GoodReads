@@ -6,6 +6,8 @@ namespace GoodReads.Domain
 {
     public class User
     {
+        public int Id { get; protected set; }
+
         private User()
         {
 
