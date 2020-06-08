@@ -15,9 +15,12 @@ namespace Tests.Infrastructure
         {
             // Arrange
             var userId = 1;
-            var expectedBook1 = BookRating.Create(1, 4);
-            var expectedBook2 = BookRating.Create(2, 3);
-            var expectedBook3 = BookRating.Create(3, 5);
+            List<BookRating> expectedBooks = new List<BookRating>
+            {
+                BookRating.Create(1, 4),
+                BookRating.Create(2, 3),
+                BookRating.Create(3, 5)
+            };
 
             IUserBookLibraryRepository userBookLibraryRepository = 
                 new UserBookLibraryStaticMemoryRepository();
@@ -26,16 +29,31 @@ namespace Tests.Infrastructure
             var actual = userBookLibraryRepository.GetBookListByUserId(userId);
 
             // Assert
-            actual.Should().ContainEquivalentOf(expectedBook1);
-            actual.Should().ContainEquivalentOf(expectedBook2);
-            actual.Should().ContainEquivalentOf(expectedBook3);
+            actual.Should().ContainEquivalentOf(expectedBooks);
         }
-
-        // TODO: Add Static Memory
+        
         [Fact]
         public void GetBookListByUserId_GivenDifferentValidUserId_ReturnsUsersBookList()
         {
+            // Arrange
+            var userId = 2;
+            List<BookRating> expectedBooks = new List<BookRating>
+            {
+                BookRating.Create(1, 1),
+                BookRating.Create(2, 5),
+                BookRating.Create(3, 2)
+            };
 
+            IUserBookLibraryRepository userBookLibraryRepository = 
+                new UserBookLibraryStaticMemoryRepository();
+
+            // Act
+            var actual = userBookLibraryRepository.GetBookListByUserId(userId);
+
+            // Assert
+            actual.Should().ContainEquivalentOf(expectedBooks);
         }
+
+        // TO DO: Update and Create
     }
 }
